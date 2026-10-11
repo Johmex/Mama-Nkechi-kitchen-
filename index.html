@@ -1,926 +1,404 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#080d19">
-
-  <meta name="description"
-    content="I'm Joshua Jibrin, a web designer creating modern, responsive websites for businesses and individuals. Contact me to build your website.">
-
-  <title>Johmex Webservices | Web Designer</title>
-
-  <style>
-    
-    :root {
-      --bg: #080d19;
-      --surface: #101a2b;
-      --surface-light: #152238;
-      --primary: #38bdf8;
-      --primary-dark: #0284c7;
-      --text: #f1f5f9;
-      --muted: #a4b2c7;
-      --border: rgba(255,255,255,0.1);
-      --radius: 18px;
-      --container: 1120px;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 90px;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
-
-    body.menu-open {
-      overflow: hidden;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button, a {
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    button {
-      font: inherit;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .container {
-      width: min(100% - 40px, var(--container));
-      margin-inline: auto;
-    }
-
-    .section {
-      padding: 100px 0;
-    }
-
-    .section-heading {
-      text-align: center;
-      max-width: 680px;
-      margin: 0 auto 50px;
-    }
-
-    .eyebrow {
-      color: var(--primary);
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-weight: 700;
-    }
-
-    h1, h2, h3 {
-      line-height: 1.2;
-      letter-spacing: -0.6px;
-    }
-
-    h2 {
-      font-size: clamp(2rem, 5vw, 3rem);
-      margin: 12px 0 16px;
-    }
-
-    .section-heading p,
-    .muted {
-      color: var(--muted);
-    }
-
-    .gradient-text {
-      color: var(--primary);
-    }
-
-    .btn {
-      min-height: 48px;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      gap: 9px;
-      padding: 12px 22px;
-      border: 1px solid transparent;
-      border-radius: 9px;
-      background: var(--primary);
-      color: #06111e;
-      font-weight: 700;
-      transition: 0.25s ease;
-      cursor: pointer;
-    }
-
-    .btn:hover {
-      background: #7dd3fc;
-      transform: translateY(-2px);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--text);
-      border-color: var(--border);
-    }
-
-    .btn-outline:hover {
-      color: var(--primary);
-      background: var(--surface);
-      border-color: var(--primary);
-    }
-
-    a:focus-visible,
-    button:focus-visible {
-      outline: 3px solid var(--primary);
-      outline-offset: 4px;
-    }
-
-    /* ===== 2. NAVIGATION ===== */
-    .header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(8, 13, 25, 0.94);
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(16px);
-    }
-
-    .navbar {
-      min-height: 76px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 24px;
-    }
-
-    .logo {
-      font-size: 1.45rem;
-      font-weight: 800;
-      letter-spacing: -1px;
-    }
-
-    .logo span {
-      color: var(--primary);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--muted);
-      font-size: 0.94rem;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--primary);
-    }
-
-    .menu-toggle {
-      display: none;
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      width: 44px;
-      height: 44px;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
-   
-    .hero {
-      min-height: 670px;
-      display: flex;
-      align-items: center;
-      position: relative;
-      isolation: isolate;
-      overflow: hidden;
-   
-  background:
-    linear-gradient(
-      rgba(5, 15, 35, 0.75),
-      rgba(5, 15, 35, 0.75)
-    ),url("backy.png");
-  
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      z-index: -1;
-      width: 480px;
-      height: 480px;
-      top: 5%;
-      right: -180px;
-      border-radius: 50%;
-      background: rgba(14, 165, 233, 0.12);
-      filter: blur(100px);
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      gap: 60px;
-      align-items: center;
-      padding-top: 65px;
-      padding-bottom: 65px;
-    }
-
-    .availability {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 7px 13px;
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      color: var(--muted);
-      font-size: 0.84rem;
-      margin-bottom: 25px;
-      
-    }
-
-    .availability::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #4ade80;
-      box-shadow: 0 0 12px #4ade8080;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.8rem, 6.2vw, 5rem);
-      line-height: 1.08;
-      margin-bottom: 22px;
-    }
-
-    .hero-copy {
-      max-width: 580px;
-      color: var(--muted);
-      font-size: 1.05rem;
-      margin-bottom: 30px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    .hero-note {
-      margin-top: 24px;
-      font-size: 0.87rem;
-      color: var(--muted);
-    }
-
-    .hero-card {
-      padding: 30px;
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      background: linear-gradient(145deg, #15263d, #0b1220);
-      box-shadow: 0 25px 70px #00000035;
-      transform: rotate(1.5deg);
-    }
-
-    .code-window {
-      overflow: hidden;
-      border: 1px solid var(--border);
-      border-radius: 13px;
-      background: #080d19;
-    }
-
-    .window-bar {
-      padding: 13px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      gap: 7px;
-    }
-
-    .window-bar span {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: #64748b;
-    }
-
-    .window-bar span:first-child { background: #fb7185; }
-    .window-bar span:nth-child(2) { background: #fbbf24; }
-    .window-bar span:nth-child(3) { background: #4ade80; }
-
-    .code-content {
-      padding: 28px 20px;
-      font-family: monospace;
-      font-size: 0.9rem;
-      line-height: 2.1;
-      overflow-wrap: anywhere;
-    }
-
-    .code-blue { color: #38bdf8; }
-    .code-green { color: #86efac; }
-    .code-purple { color: #c4b5fd; }
-
-    .hero-card-caption {
-      margin-top: 22px;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    /* ===== 4. SERVICES ===== */
-    .services {
-      background: #0b1220;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 22px;
-    }
-
-    .service-card,
-    .project-card,
-    .about-panel {
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--surface);
-      transition: border-color 0.25s, transform 0.25s;
-    }
-
-    .service-card {
-      padding: 28px;
-    }
-
-    .service-card:hover,
-    .project-card:hover {
-      transform: translateY(-5px);
-      border-color: #38bdf866;
-    }
-
-    .service-icon {
-      width: 54px;
-      height: 54px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 22px;
-      border-radius: 14px;
-      color: var(--primary);
-      background: #38bdf81a;
-      font-size: 1.65rem;
-    }
-
-    .service-card h3 {
-      font-size: 1.2rem;
-      margin-bottom: 12px;
-    }
-
-    .service-card p {
-      color: var(--muted);
-      font-size: 0.94rem;
-    }
-
-    /* ===== 5. ABOUT ===== */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .about-panel {
-      padding: 34px;
-      background:
-        radial-gradient(circle at top right, #0ea5e933, transparent 50%),
-        var(--surface);
-    }
-
-.initials {
-  width: 120px;
-  height: 150px;
-  display: grid;
-  place-items: center;
-  margin-bottom: 25px;
-  border: 1px solid #38bdf855;
-  border-radius: 25px;
-  color: var(--primary);
-  font-size: 2.3rem;
-padding:7px;
-  
-
-  background-image: url("Joshua.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-
-    .about-panel h3 {
-      font-size: 1.55rem;
-      margin-bottom: 8px;
-    }
-
-    .about-panel p,
-    .about-copy p {
-      color: var(--muted);
-    }
-
-    .about-copy p {
-      margin-bottom: 18px;
-    }
-
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 25px;
-    }
-
-    .skill {
-      padding: 7px 13px;
-      border: 1px solid var(--border);
-      border-radius: 7px;
-      background: var(--surface);
-      font-size: 0.87rem;
-      color: #cbd5e1;
-    }
-
-    /* ===== 6. PORTFOLIO ===== */
-    .portfolio {
-      background: #0b1220;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .project-card {
-      overflow: hidden;
-    }
-
-    .project-preview {
-      min-height: 200px;
-      padding: 20px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, #0c4a6e, #172554);
-    }
-
-    .project-preview.business {
-      background: linear-gradient(135deg, #78350f, #1c1917);
-    }
-
-    .project-preview.store {
-      background: linear-gradient(135deg, #064e3b, #052e16);
-    }
-
-    .mock-browser {
-      width: 100%;
-      max-width: 280px;
-      padding: 12px;
-      border: 1px solid #ffffff40;
-      border-radius: 10px;
-      background: #08111fe8;
-      box-shadow: 0 15px 35px #00000035;
-    }
-
-    .mock-line {
-      height: 7px;
-      margin: 10px 0;
-      border-radius: 5px;
-      background: #ffffff25;
-    }
-
-    .mock-line.short { width: 45%; }
-    .mock-line.medium { width: 70%; }
-
-    .mock-button {
-      width: 120px;
-      height: 40px;
-      margin-top: 10px;
-      border-radius: 10px;
-      border:none;
-      cursor:pointer;
-      background: var(--primary);
-    } 
-    
-
-    .project-info {
-      padding: 23px;
-    }
-
-    .project-info h3 {
-      font-size: 1.17rem;
-      margin-bottom: 9px;
-    }
-
-    .project-info p {
-      color: var(--muted);
-      font-size: 0.91rem;
-      margin-bottom: 15px;
-    }
-
-    .project-tag {
-      display: inline-block;
-      margin: 0 5px 7px 0;
-      padding: 4px 9px;
-      border-radius: 5px;
-      background: #38bdf817;
-      color: var(--primary);
-      font-size: 0.76rem;
-    }
-
-    .portfolio-note {
-      margin-top: 28px;
-      color: var(--muted);
-      text-align: center;
-      font-size: 0.9rem;
-    }
-
-    /* ===== 7. CONTACT ===== */
-    .contact-box {
-      max-width: 780px;
-      margin: auto;
-      padding: clamp(25px, 6vw, 55px);
-      text-align: center;
-      border: 1px solid var(--border);
-      border-radius: 25px;
-      background:
-        radial-gradient(circle at top, #0ea5e926, transparent 65%),
-        var(--surface);
-    }
-
-    .contact-box p {
-      max-width: 560px;
-      margin: 0 auto 25px;
-      color: var(--muted);
-    }
-
-    .contact-details {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin: 25px 0;
-    }
-
-    .contact-item {
-      padding: 10px 14px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      color: #cbd5e1;
-      font-size: 0.92rem;
-    }
-
-    .contact-item:hover {
-      border-color: var(--primary);
-    }
-
-    
-    footer {
-      padding: 28px 0;
-      border-top: 1px solid var(--border);
-    }
-
-    .footer-inner {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 15px;
-      color: var(--muted);
-      font-size: 0.87rem;
-    }
-
-    
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        scroll-behavior: auto !important;
-        animation: none !important;
-        transition: none !important;
-      }
-
-      .reveal {
-        opacity: 1;
-        transform: none;
-      }
-    }
-
-  
-    @media (max-width: 850px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-        gap: 42px;
-      }
-
-      .hero {
-        min-height: auto;
-      }
-
-      .hero-card {
-        max-width: 520px;
-        transform: none;
-      }
-
-      .card-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 35px;
-      }
-
-      .about-panel {
-        max-width: 520px;
-      }
-
-      .section {
-        padding: 75px 0;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .container {
-        width: min(100% - 32px, var(--container));
-      }
-
-      .navbar {
-        min-height: 68px;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-
-      .nav-links {
-        position: fixed;
-        top: 68px;
-        left: 0;
-        right: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-        padding: 10px 20px 22px;
-        background: #080d19;
-        border-bottom: 1px solid var(--border);
-        visibility: hidden;
-        opacity: 0;
-        transform: translateY(-8px);
-        transition: 0.2s ease;
-      }
-
-      .nav-links.open {
-        visibility: visible;
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .nav-links li a {
-        display: block;
-        padding: 13px 5px;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .nav-links li:last-child a {
-        border-bottom: none;
-      }
-
-      .nav-links .nav-cta {
-        margin-top: 12px;
-        padding: 10px 14px;
-        border: 1px solid var(--primary);
-        border-radius: 8px;
-        text-align: center;
-      }
-
-      .hero-grid {
-        padding-top: 65px;
-        padding-bottom: 65px;
-      }
-
-      .hero h1 {
-        font-size: clamp(2.55rem, 12vw, 3.8rem);
-      }
-
-      .hero-copy {
-        font-size: 0.98rem;
-      }
-
-      .hero-actions {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .hero-actions .btn {
-        width: 100%;
-      }
-
-      .card-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .service-card {
-        padding: 24px;
-      }
-
-      .hero-card {
-        padding: 17px;
-      }
-
-      .code-content {
-        font-size: 0.78rem;
-        padding: 20px 13px;
-      }
-
-      .section {
-        padding: 65px 0;
-      }
-
-      .section-heading {
-        margin-bottom: 35px;
-      }
-
-      .footer-inner {
-        flex-direction: column;
-        text-align: center;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mama Nkechi Kitchen - Home Taste, Delivered Fast</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial, sans-serif}
+body{background:#fff8f0;color:#2d2d2d}
+.top{background:#ff6b00;color:white;text-align:center;padding:8px;font-size:13px;font-weight:bold}
+.hero{background:linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.65)),url('https://images.pexels.com/photos/699953/pexels-photo-699953.jpeg');background-size:cover;background-position:center;color:white;text-align:center;padding:90px 20px}
+.hero h1{font-size:38px;margin-bottom:10px}
+.hero p{font-size:18px;margin-bottom:20px}
+.btn{display:inline-block;background:#ff6b00;color:white;padding:13px 28px;border-radius:30px;text-decoration:none;font-weight:bold;margin:5px}
+.btn-white{background:white;color:#ff6b00}
+.special{max-width:600px;margin:25px auto;background:white;border:2px dashed #ff6b00;border-radius:16px;padding:22px;text-align:center;box-shadow:0 4px 15px rgba(0,0,0,0.07)}
+.special h3{color:#ff6b00;margin-bottom:8px}
+.menu-section{padding:30px 15px;max-width:1100px;margin:auto}
+.menu-section h2{text-align:center;margin-bottom:20px;color:#ff6b00;font-size:28px}
+.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.card{background:white;border-radius:14px;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,0.08);text-align:left}
+.card img{width:100%;height:160px;object-fit:cover}
+.card-body{padding:14px}
+.card-body h4{margin-bottom:6px}
+.card-body p{font-size:14px;color:#666;margin-bottom:10px}
+.price{font-weight:bold;color:#ff6b00;font-size:18px}
+.card-body .btn{padding:10px 18px;font-size:14px;width:100%;text-align:center}
+.steps{background:#fff2e6;padding:35px 20px;text-align:center;margin-top:30px}
+.steps-grid{display:flex;justify-content:center;gap:25px;flex-wrap:wrap;margin-top:15px}
+.footer{background:#1f1f1f;color:white;text-align:center;padding:30px 20px}
+.float{position:fixed;bottom:20px;right:20px;background:#25D366;color:white;padding:15px 22px;border-radius:50px;text-decoration:none;font-weight:bold;box-shadow:0 4px 10px rgba(0,0,0,0.2)}
+</style>
 </head>
-
 <body>
 
-  <!-- NAVIGATION -->
-  <header class="header">
-    <nav class="navbar container" aria-label="Main navigation">
-      <a class="logo" href="#home" aria-label="Joshua Jibrin home">
-        JOHMEX WEB SERVICES<span>.</span>
-      </a>
+<div class="top">🚚 Free Delivery for Orders Above ₦10,000 - Surulere & Yaba | 8am - 10pm</div>
 
-      <button
-        class="menu-toggle"
-        id="menuToggle"
-        aria-label="Open navigation menu"
-        aria-expanded="false"
-        aria-controls="navLinks">
-        ☰
-      </button>
+<div class="hero">
+<h1>MAMA NKECHI KITCHEN</h1>
+<p>Home Taste, Delivered Hot in 30 Mins</p>
+<a class="btn" href="https://wa.me/2348114949051?text=Hello%20Mama%20Nkechi%20I%20want%20to%20order%20food">ORDER ON WHATSAPP</a>
+<a class="btn btn-white" href="#menu">VIEW MENU</a>
+</div>
 
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li>
-          <a class="nav-cta" href="#contact">Hire Me ↗</a>
-        </li>
-      </ul>
-    </nav>
-  </header>
+<div class="special">
+<h3>🔥 TODAY'S SPECIAL</h3>
+<h2>Suya Jollof + 2 Chicken + Coke</h2>
+<p><span style="font-size:22px;font-weight:bold;color:#ff6b00">₦6,500</span> <s>₦7,500</s></p>
+<p style="font-size:13px;color:#666">Ends Today 9pm - Limited Plates</p>
+<br>
+<a class="btn" href="https://wa.me/2348114949051?text=Hello%20I%20want%20TODAY%20SPECIAL%20Suya%20Jollof%20₦6500">Order Special Now</a>
+</div>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero" id="home">
-      <div class="hero-grid container">
+<div class="menu-section" id="menu">
+<h2>Our Menu</h2>
+<div class="menu">
 
-        <div class="reveal">
-          <div class="availability">Available for web design projects</div>
+<div class="card">
+<img src="https://images.pexels.com/photos/1624487/pexels-photo-1624487.jpeg">
+<div class="card-body">
+<h4>Jollof Rice + Chicken</h4>
+<p>Smoky party jollof with grilled chicken</p>
+<p class="price">₦3,500</p>
+<a class="btn" href="https://wa.me/2348114948051?text=I%20want%20Jollof%20Rice%20Chicken%20₦3500">Order on WhatsApp</a>
+</div>
+</div>
 
-          <p class="eyebrow">Hello, welcome to Joshua's igh-tech Modern Expertise website</p>
+<div class="card">
+<img src="https://images.pexels.com/photos/1640774/pexels-photo-1640774.jpeg">
+<div class="card-body">
+<h4>Fried Rice + Turkey</h4>
+<p>Loaded fried rice with big turkey</p>
+<p class="price">₦4,000</p>
+<a class="btn" href="https://wa.me/2348114949051?text=I%20want%20Fried%20Rice%20Turkey%20₦4000">Order on WhatsApp</a>
+</div>
+</div>
 
-          <h1>
-           We Build Websites That
-            <span class="gradient-text">Grow Businesses.</span>
-          </h1>
+<div class="card">
+<img src="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg">
+<div class="card-body">
+<h4>Amala + Ewedu + Goat Meat</h4>
+<p>Hot amala, draw ewedu, juicy goat</p>
+<p class="price">₦3,000</p>
+<a class="btn" href="https://wa.me/2348114949051?text=I%20want%20Amala%20Ewedu%20Goat%20₦3000">Order on WhatsApp</a>
+</div>
+</div>
 
-        
+<div class="card">
+<img src="https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg">
+<div class="card-body">
+<h4>Ofada Rice + Sauce + Fish</h4>
+<p>Original ofada with designer stew</p>
+<p class="price">₦4,500</p>
+<a class="btn" href="https://wa.me/2348124949051?text=I%20want%20Ofada%20Rice%20₦4500">Order on WhatsApp</a>
+</div>
+</div>
 
-          <div class="hero-actions">
-            <a class="btn" href="#portfolio">Explore My Work ↗</a>
+<div class="card">
+<img src="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg">
+<div class="card-body">
+<h4>Small Chops Box (20 pcs)</h4>
+<p>Samosa, spring roll, puff, chicken</p>
+<p class="price">₦5,000</p>
+<a class="btn" href="https://wa.me/2348012345678?text=I%20want%20Small%20Chops%20Box%20₦5000">Order on WhatsApp</a>
+</div>
+</div>
 
-            <a
-              class="btn btn-outline"
-              href="https://wa.me/2348114949051?text=Hello%20Joshua%2C%20I%20am%20interested%20in%20your%20web%20design%20services."
-              target="_blank"
-              rel="noopener noreferrer">
-              Let's Talk on WhatsApp
-            </a>
-          </div>
+<div class="card">
+<img src="https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg">
+<div class="card-body">
+<h4>Pounded Yam + Egusi + Assorted</h4>
+<p>Soft poundo with rich egusi</p>
+<p class="price">₦3,200</p>
+<a class="btn" href="https://wa.me/23480114949051?text=I%20want%20Pounded%20Yam%20Egusi%20₦3200">Order on WhatsApp</a>
+</div>
+</div>
 
-          <p class="hero-note">
-            Responsive design · Clean layouts · Business-focused websites
-          </p>
-        </div>
+</div>
+</div>
 
-        <div class="hero-card reveal">
-          <div class="code-window">
-            <div class="window-bar">
-              <span></span><span></span><span></span>
-            </div>
+<div class="steps">
+<h2>How To Order</h2>
+<div class="steps-grid">
+<div><h3>1️⃣</h3><p>Choose Meal</p></div>
+<div><h3>2️⃣</h3><p>Chat on WhatsApp</p></div>
+<div><h3>3️⃣</h3><p>We Deliver in 30 Mins</p></div>
+</div>
+</div>
 
-            <div class="code-content">
-              <div class="code-purple">&lt;developer&gt;</div>
-              <div>&nbsp; name: <span class="code-green">"Joshua"</span>,</div>
-              <div>&nbsp; role: <span class="code-green">"Web Designer"</span>,</div>
-              <div>&nbsp; design: <span class="code-blue">"Modern"</span>,</div>
-              <div>&nbsp; responsive: <span class="code-purple">true</span>,</div>
-              <div>&nbsp; goal: <span class="code-green">"Your Growth"</span></div>
-              <div class="code-purple">&lt;/developer&gt;</div>
-            </div>
-          </div>
+<div class="footer">
+<p>📍 45 Adelabu Street, Surulere, Lagos</p>
+<p>📞 Call:08114949051 | WhatsApp Same Number</p>
+<p>💳 Transfer | Cash on Delivery</p><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STITCHED BY TOLA - Made For Your Body</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family: -apple-system, sans-serif;
+      background:#fffaf9;
+      color:#1a1a1a; 
+      line-height:1.6}
+a{text-decoration:none; 
+    color:inherit}
+img{display:block; 
+    width:100%; 
+    object-fit:cover}
+.topbar{background:#1a1a1a; 
+    color:#fff;
+    text-align:center; 
+    padding:8px; 
+    font-size:12px; 
+    letter-spacing:1px}
+.hero{display:grid; 
+      grid-template-columns:1fr;
+      min-height:92vh}
+.hero-text{padding:40px 24px;
+    display:flex; 
+    flex-direction:column; 
+    justify-content:center; 
+    order:2}
+.hero-text h1{font-size:clamp(36px, 10vw, 64px); 
+      line-height:0.95; 
+      font-weight:900; 
+      letter-spacing:-1px}
+.hero-text h1 span{color:#e85d5d}
+.hero-text p.sub{font-size:clamp(16px, 4vw, 20px); 
+    margin-top:14px; 
+    color:#555; 
+    max-width:420px}
+.hero-img{order:1; 
+    height:60vh; 
+    background:url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1000') center/cover}
+.btns{display:flex;
+    gap:12px; 
+    margin-top:28px; 
+    flex-wrap:wrap}
+.btn{padding:15px 24px; 
+    border-radius:100px;
+    font-weight:800; 
+    font-size:14px; 
+    text-align:center}
+.btn-black{background:#1a1a1a;
+      color:#fff}
+.btn-outline{border:2px solid #1a1a1a; 
+       background:#fff}
+.section{padding:60px 20px; 
+      max-width:1200px; 
+      margin:auto}
+.section h2{font-size:clamp(26px, 5vw, 38px); 
+      font-weight:900; 
+      margin-bottom:24px}
+.cats{display:grid; 
+        grid-template-columns:1fr;
+       gap:16px}
+.cat{position:relative;
+      height:320px;
+      border-radius:24px;
+      overflow:hidden}
+.cat img{height:100%}
+.cat span{position:absolute;
+      bottom:16px; 
+       left:16px; 
+       background:#fff; 
+       padding:10px 18px; 
+       border-radius:100px;
+       font-weight:800; 
+       font-size:13px}
+.products{display:grid; 
+      grid-template-columns:1fr 1fr; 
+      gap:14px}
+.prod{background:#fff;
+      border-radius:20px; 
+      overflow:hidden; 
+      border:1px solid #eee}
+.prod-info{padding:14px}
+.prod-info h3{font-size:15px; 
+    font-weight:700}
+.prod-info .price{font-weight:900;
+    margin-top:4px}
+.prod-info .size{font-size:11px;
+     color:#777; 
+     margin-top:2px}
+.order{display:block; 
+    margin-top:10px; 
+    background:#1a1a1a; 
+    color:#fff; 
+    text-align:center; 
+    padding:10px; 
+    border-radius:100px; 
+    font-weight:700; 
+    font-size:12px}
+.how{display:grid; 
+     grid-template-columns:1fr 1fr; 
+     gap:16px; 
+     text-align:center}
+.how div{background:#fff; 
+      padding:20px;
+      border-radius:18px;
+      border:1px solid #eee}
+.how b{display:block; 
+     font-size:28px}
+.size-table{width:100%;
+    border-collapse:collapse;
+    background:#fff; 
+    border-radius:16px; 
+    overflow:hidden; 
+    margin-top:16px}
+.size-table th, .size-table td{padding:12px; 
+      text-align:left; 
+      border-bottom:1px 
+      solid #eee; 
+      font-size:13px}
+.size-table th{background:#1a1a1a; 
+   color:#fff}
+.reviews{display:grid; 
+     grid-template-columns:1fr;
+     gap:16px}
+.rev{display:flex; 
+     gap:14px;
+     background:#fff; 
+     padding:16px; 
+     border-radius:18px; 
+     border:1px solid #eee; 
+     align-items:center}
+.rev img{width:60px; 
+      height:60px; 
+      border-radius:50%}
+.about{background:#1a1a1a;
+     color:#fff; 
+     width:100vw; 
+     margin-left:calc(-50vw + 50%); 
+      padding:60px 20px}
+.about-inner{max-width:1200px;
+    margin:auto}
+.footer{padding:40px 20px;
+    background:#fffaf9;
+    border-top:1px solid #eee}
+.footer-grid{display:grid; 
+     grid-template-columns:1fr; gap:24px;
+     max-width:1200px; 
+     margin:auto}
+.float{position:fixed; 
+    bottom:20px;
+    right:20px; 
+    background:#e85d5d; 
+    color:#fff;
+    padding:14px 20px; 
+    border-radius:100px;
+    font-weight:800; 
+    z-index:99; 
+    box-shadow:0 10px 30px rgba(0,0,0,0.2)}
+@media(min-width:768px){
+  .hero{grid-template-columns:1fr 1fr}
+  .hero-text{order:1; padding:60px}
+  .hero-img{order:2; height:auto; min-height:92vh}
+  .cats{grid-template-columns:1fr 1fr 1fr}
+  .products{grid-template-columns:1fr 1fr 1fr}
+  .how{grid-template-columns:1fr 1fr 1fr 1fr}
+  .reviews{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
 
-          <p class="hero-card-caption">
-            Turning ideas into clean, useful digital experiences.
-          </p>
-        </div>
+<div class="topbar">✈️ Nationwide Delivery | Pay on Delivery in Lagos</div>
+<a class="float" href="https://wa.me/2348083049565?text=Hi%20Tola,%20I%20want%20to%20shop">💬 Chat Tola</a>
 
-      </div>
-    </section>
+<section class="hero">
+  <div class="hero-text">
+    <h1>STITCHED<br>BY <span>TOLA</span></h1>
+    <p class="sub">Made For Your Body, Not Just Your Size.<br>Custom Wears | Ready to Wear | Asoebi</p>
+    <div class="btns">
+      <a class="btn btn-black" href="https://wa.me/2348083049565?text=Hi%20Tola,%20I%20want%20to%20shop">SHOP ON WHATSAPP</a>
+      <a class="btn btn-outline" href="#bestsellers">VIEW LOOKBOOK</a>
+    </div>
+  </div>
+  <div class="hero-img"></div>
+</section>
 
-    <!-- SERVICES -->
-    <section class="section services" id="services">
-      <div class="container">
+<section class="section">
+  <h2>Shop By Category</h2>
+  <div class="cats">
+    <a class="cat" href="https://wa.me/2348083049565?text=Hi%20Tola,%20I%20want%20Ready%20to%20Wear"><img src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=600"><span>READY TO WEAR →</span></a>
+    <a class="cat" href="https://wa.me/2348083049565?text=Hi%20Tola,%20I%20want%20Custom%20/%20Bespoke"><img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=600"><span>CUSTOM / BESPOKE →</span></a>
+    <a class="cat" href="https://wa.me/2348083049565?text=Hi%20Tola,%20I%20want%20Asoebi%20Deals"><img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600"><span>ASOEBI DEALS →</span></a>
+  </div>
+</section>
 
-        <div class="section-heading reveal">
-          <span class="eyebrow">What I offer</span>
-          <h2>My <span class="gradient-text">Services</span></h2>
-          <p>
-            Practical website solutions designed to help individuals
-            and businesses present themselves professionally online.
-          </p>
-        </div>
+<section class="section" id="bestsellers">
+  <h2>Best Sellers This Week</h2>
+  <div class="products">
+    <div class="prod"><img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=500" style="height:240px"><div class="prod-info"><h3>Zara Gown</h3><div class="price">₦25,000</div><div class="size">Sizes M, L</div><a class="order" href="https://wa.me/2348083049565?text=Hi%20Tola,%20I%20want%20Zara%20Gown%20%E2%82%A625k%20Size%20L">Order</a></div></div>
+    <div class="prod"><img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=500" style="height:240px"><div class="prod-info"><h3>Two-Piece Set</h3><div class="price">₦18,500</div><div class="size">S, M, L</div><a class="order" href="https//wa.me/2348083049565?text=Hi%20Tola,%20I%20want%20Two-Piece%20Set%20%E2%82%A618.5k">Order</a></div></div>
+    <div class="prod"><img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=500" style="height:240px"><div class="prod-info"><h3>Bubu Chic</h3><div class="price">₦15,000</div><div class="size">Free Size</div><a class="order" href="https://wa.me/2348083049565text=Hi%20Tol,%20I%20want%20Bubu%20Chic%20%E2%82%A615k">Order</a></div></div>
+    <div class="prod"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=500" style="height:240px"><div class="prod-info"><h3>Asoebi Lace + Gele Bundle</h3><div class="price">₦45,000</div><div class="size">Bundle</div><a class="order" href="https://wa.me/2348083049565?text=Hi%20Tola,%20I%20want%20Asoebi%20Lace%20Bundle%20%E2%82%A645k">Order</a></div></div>
+    <div class="prod"><img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=500" style="height:240px"><div class="prod-info"><h3>Corporate Pant</h3><div class="price">₦12,000</div><div class="size">S - XL</div><a class="order" href="https://wa.me/2348083049565?text=Hi%20Tola,%20I%20want%20Corporate%20Pant%20%E2%82%A612k">Order</a></div></div>
+    <div class="prod"><img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=500" style="height:240px"><div class="prod-info"><h3>Ankara Jumpsuit</h3><div class="price">₦20,000</div><div class="size">M, L, XL</div><a class="order" href="https://wa.me/2348083049565?text=Hi%20Tola,%20I%20want%20Ankara%20Jumpsuit%20%E2%82%A620k">Order</a></div></div>
+  </div>
+</section>
 
-        <div class="card-grid">
+<section class="section">
+  <h2>How It Works</h2>
+  <div class="how">
+    <div><b>1</b><h4>Pick Style</h4><p style="font-size:12px;color:#666">Choose from Ready to Wear or send inspo</p></div>
+    <div><b>2</b><h4>Send Size</h4><p style="font-size:12px;color:#666">WhatsApp your size or measurements</p></div>
+    <div><b>3</b><h4>We Sew / Pack</h4><p style="font-size:12px;color:#666">We sew or pack in 2-3 days</p></div>
+    <div><b>4</b><h4>Deliver</h4><p style="font-size:12px;color:#666">Nationwide delivery 3-5 days</p></div>
+  </div>
 
-          <article class="service-card reveal">
-            <div class="service-icon" aria-hidden="true">⌘</div>
-            <h3>Website Design</h3>
-            <p>
-              Modern and visually appealing websites tailored to your
-              brand, business goals and target audience.
-            </p>
-          </article>
+  <div style="margin-top:50px">
+    <h2>Size Guide</h2>
+    <table class="size-table">
+      <tr><th>Size</th><th>Bust</th><th>Waist</th><th>Hip</th></tr>
+      <tr><td>S</td><td>34"</td><td>28"</td><td>38"</td></tr>
+      <tr><td>M</td><td>36"</td><td>30"</td><td>40"</td></tr>
+      <tr><td>L</td><td>38"</td><td>32"</td><td>42"</td></tr>
+      <tr><td>XL</td><td>40"</td><td>34"</td><td>44"</td></tr>
+    </table>
+    <p style="font-size:13px; margin-top:10px; color:#666">Send your measurements if unsure, we will guide you.</p>
+  </div>
+</section>
 
-          <article class="service-card reveal">
-            <div class="service-icon" aria-hidden="true">▣</div>
-            <h3>Responsive Websites</h3>
-            <p>
-              Layouts designed to adapt to smartphones, tablets and
-              laptops for a smooth browsing experience.
-            </p>
-          </article>
+<section class="section">
+  <h2>Real Customers</h2>
+  <div class="reviews">
+    <div class="rev"><img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200"><div><p>"Fit is perfect, I didn't adjust anything. Tola sabi work!"</p><b>- Chinelo, Lekki</b></div></div>
+    <div class="rev"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200"><div><p>"My asoebi came on time and everybody asked me for vendor."</p><b>- Amaka, Yaba</b></div></div>
+  </div>
+</section>
 
-          <article class="service-card reveal">
-            <div class="service-icon" aria-hidden="true">↗</div>
-            <h3>Business Websites</h3>
-            <p>
-              Professional online platforms to introduce your services,
-              showcase your work and help customers contact you.
-            </p>
-          </article>
+<div class="about">
+  <div class="about-inner">
+    <h2 style="color:#fff">About Tola</h2>
+    <p style="max-width:600px; color:#ccc; margin-top:10px">I started stitching in Yaba with one machine in 2022... Now we deliver 100+ dresses monthly. Every dress is made for YOUR body, not just your size. No more too tight for chest, too loose for waist.</p>
+  </div>
+</div>
 
-        </div>
-      </div>
-    </section>
+<footer class="footer">
+  <div class="footer-grid">
+    <div>
+      <h3 style="font-weight:900; font-size:22px">STITCHED BY TOLA</h3>
+      <p style="margin-top:12px; font-size:14px; color:#666">📍 Shop 12, Yaba Market, Lagos<br>📦 Delivery 3-5 days Nationwide<br>🔄 No refund after sewing (custom), Exchange for Ready-to-Wear<br>💳 Pay on Delivery in Lagos</p>
+      <p style="margin-top:16px"><a href="#">📸 @stitchedbytola</a> | <a href="#">🎵 TikTok</a></p>
+    </div>
+    <div>
+      <p style="font-weight:800">Chat Directly</p>
+      <a class="btn btn-black" style="display:inline-block; margin-top:10px" href="https://wa.me/2348083049565?text=Hi%20Tola">Chat Tola on WhatsApp</a>
+    </div>
+  </div>
+</footer>
 
-    <!-- ABOUT -->
-    <section class="section" id="about">
-      <div class="about-grid container">
+</body>
+</html>
+<p style="margin-top:10px;font-size:12px;color:#aaa">Built by Johmex Web Services</p>
+</div>
 
-        <div class="about-panel reveal">
-          <div class="initials" aria-hidden="true"></div>
-          <h3>Joshua Jibrin</h3>
-          <p >I'm Joshua, the founder of Joshua's High-Tech Modern Expertise Web Services, based in Ofu LGA, Kogi State, Nigeria. I'm a passionate web designer dedicated to creating modern, responsive, and user-friendly websites that help businesses build a strong online presence and grow digitally.
-                    
+<a class="float" href="https://wa.me/23480114949051?text=Hello%20I%20want%20to%20order%20food">🍛 Order Now</a>
+
+</body>
+                        </html>
